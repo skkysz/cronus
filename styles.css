@@ -17,8 +17,9 @@ body {
     display: flex;
 }
 
+/* Sidebar */
 .sidebar {
-    width: 200px; /* Reduzida para liberar mais espaço para o calendário */
+    width: 250px;
     background-color: #1A2A4E;
     color: #FFFFFF;
     display: flex;
@@ -94,10 +95,11 @@ body {
     margin-bottom: 20px;
 }
 
+/* Main Content */
 .content {
-    margin-left: 200px; /* Atualizado para corresponder à nova largura da barra lateral */
+    margin-left: 250px;
     padding: 20px;
-    width: calc(100% - 200px); /* Expande para ocupar mais espaço */
+    width: calc(100% - 250px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,6 +112,7 @@ body {
     width: calc(100% - 60px);
 }
 
+/* Novo cronograma */
 .new-schedule {
     display: flex;
     flex-direction: column;

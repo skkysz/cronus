@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="d-flex">
+        <!-- Sidebar -->
         <aside class="sidebar bg-dark text-white p-3">
             <div class="user-info text-center mb-3">
                 <img src="user_profile.png" alt="Ícone do usuário" class="img-fluid rounded-circle mb-2">
@@ -28,7 +29,10 @@
             </nav>
             <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
         </aside>
+        
+        <!-- Main Content -->
         <main class="content container-fluid mt-5">
+            <!-- Calendar -->
             <div id="calendario" class="calendar-container">
                 <div class="calendar-header">
                     <button class="btn btn-link text-white" onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
@@ -48,6 +52,8 @@
                     <div id="days" class="days-grid"></div>
                 </div>
             </div>
+            
+            <!-- Schedule -->
             <div id="cronograma" class="schedule-container" style="display: none;">
                 <!-- Conteúdo do cronograma -->
                 <button class="btn btn-secondary mt-3" onclick="showCalendar()">Voltar para o Calendário</button>

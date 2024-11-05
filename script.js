@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
 
+    // Renderiza o calendário para o mês e ano fornecidos
     function renderCalendar(month, year) {
         daysContainer.innerHTML = '';
         monthElement.textContent = monthNames[month];
@@ -15,12 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+        // Preenche os dias vazios antes do primeiro dia do mês
         for (let i = 0; i < firstDay; i++) {
             const emptyDiv = document.createElement('div');
             emptyDiv.classList.add('day');
             daysContainer.appendChild(emptyDiv);
         }
 
+        // Preenche os dias do mês
         for (let i = 1; i <= daysInMonth; i++) {
             const dayDiv = document.createElement('div');
             dayDiv.textContent = i;
@@ -33,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Navega para o mês anterior
     function prevMonth() {
         currentMonth--;
         if (currentMonth < 0) {
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCalendar(currentMonth, currentYear);
     }
 
+    // Navega para o próximo mês
     function nextMonth() {
         currentMonth++;
         if (currentMonth > 11) {
@@ -51,15 +56,18 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCalendar(currentMonth, currentYear);
     }
 
+    // Mostra o calendário e esconde o cronograma
     window.showCalendar = function() {
         document.getElementById('cronograma').style.display = 'none';
         document.getElementById('calendario').style.display = 'block';
     }
 
+    // Fecha o modal de anotações
     window.closeModal = function() {
         document.getElementById('noteModal').style.display = 'none';
     }
 
+    // Salva a anotação
     window.saveNote = function() {
         const noteText = document.getElementById('noteText').value;
         // Salvar a anotação (você pode usar localStorage, enviar para um servidor, etc.)
@@ -67,5 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
         closeModal();
     }
 
+    // Renderiza o calendário para o mês e ano atuais
     renderCalendar(currentMonth, currentYear);
 });
