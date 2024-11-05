@@ -1,0 +1,77 @@
+Gestão do Tempo e Organização de Estudos
+
+
+O problema identificado
+Estudantes frequentemente possuem dificuldades em gerenciar o tempo e organizar os estudos, o que leva a procrastinação e perda de prazos. Matando a produtividade e aumentando o estresse, prejudicando o desempenho acadêmico.
+
+Softwares e aplicativos escolhidos:
+API - OpenAI e GitHub Copilot
+
+Justificar as escolhas do software
+API Reference - OpenAI API:
+Usar API para criarmos um cronograma para estudos e rotina porém tendo um orientador dando ordens, fazendo lembrete e trancar o uso do programa quando bater um horário específico, iremos utilizar a linguagem python para trabalharmos em cima dessa API e fazer um produto que ajude os alunos pararem de procrastinar e se organizarem
+
+GitHub Copilot:
+Vamos utilizar a extensão GitHub Copilot, uma ferramenta de IA que acelera o desenvolvimento, trazendo sugestões e melhorias no código. Será usada para a criação do software
+
+Funcionalidades do Assistente Virtual:
+
+Vamos desenvolver um assistente virtual de estudos usando a API da OpenAI e Python para auxiliar estudantes na organização de rotinas e gestão do tempo. Esse "orientador virtual" terá as seguintes funcionalidades:
+
+Criação de Cronogramas Personalizados: Sugestões de horários de estudo e descanso com base nas metas e compromissos do aluno, formando uma rotina equilibrada.
+
+Envio de Lembretes Automatizados: Notificações para lembrar de prazos de tarefas, horários de estudo e momentos de descanso, mantendo o aluno no cronograma.
+
+Orientação com Técnicas de Estudo: Recomendações de técnicas como pomodoro e revisão espaçada para melhorar a eficiência e a retenção de conhecimento.
+
+Bloqueio Temporário de Aplicativos: Restrição de uso de certos aplicativos fora do horário de estudo, promovendo foco e autodisciplina.
+
+São com essas funções, que o APP irá contribuir para melhorar o ensino e a aprendizagem
+
+
+
+
+
+Roteiro
+
+
+Nós selecionamos o problema de Gestão de Tempo e Organização de Estudos, que é algo que nós enfrentamos e a maioria dos estudantes enfrentam.
+
+Coisas como deixar para última hora, não tratar com tanta seriedade certa atividade, resultando em uma sobrecarga de inúmeras atividades ao mesmo tempo, tendo que recorrer a alternativas mais fáceis como copiar de um colega ou uso de IA.
+
+Tudo isso inclusive afeta a saúde mental do estudante, que acaba tendo uma rotina não muito saudável. Para isso, decidimos criar o seguinte projeto: 
+
+(começa a explicar sobre o protótipo) (Alisson)
+
+(slide 4): Usar API para criarmos um cronograma para estudos e rotina porém tendo um orientador dando ordens, fazendo lembrete e trancar o uso do programa quando bater um horário específico, iremos utilizar a linguagem python para trabalharmos em cima dessa API e fazer um produto que ajude os alunos pararem de procrastinar e se organizarem
+
+Vamos utilizar a extensão GitHub Copilot, uma ferramenta de IA que acelera o desenvolvimento, trazendo sugestões e melhorias no código. Será usada para a criação do software
+
+Vamos desenvolver um assistente virtual de estudos usando a API da OpenAI para auxiliar estudantes na organização de suas rotinas e na gestão do tempo.
+
+Esse assistente funcionará como um "orientador virtual", oferecendo suporte contínuo para a criação de cronogramas personalizados, envio de lembretes e bloqueio de aplicativos para reforçar a disciplina.
+
+O projeto incluirá também o uso do GitHub Copilot para otimizar e acelerar o desenvolvimento
+
+Permitindo realizar atividades de lazer com mais tranquilidade nas horas vagas. São esses os benefícios da consistência e da produtividade.
+
+Aplicativos prontos, como plataformas de gerenciamento de tempo (Trello, Notion), não nos permitem o mesmo nível de controle e personalização que obtemos com o uso da API da OpenAI e com o desenvolvimento em Python.
+
+Nossa proposta busca criar um produto adaptado especificamente para a realidade dos estudantes e professores, indo além do que softwares genéricos podem oferecer.
+
+Optamos por utilizar a API da OpenAI e o GitHub Copilot porque ambos oferecem funcionalidades específicas e integradas que se alinham perfeitamente com o nosso projeto.
+
+A API da OpenAI oferece muita personalização, permitindo a adaptação do assistente virtual às necessidades específicas de alunos, algo que nem sempre é possível com outros aplicativos prontos.
+
+Outro fator-chave, obviamente, é a linguagem altamente natural da IA, facilitando a familiarização para o usuário, e por ser altamente confiável, com mais tempo de mercado e muito bem difundida, o que atrai a maioria do público.
+
+O GitHub Copilot foi escolhido porque vai acelerar o desenvolvimento do projeto, através de sugestões (e correções) de código precisas em tempo real. Ainda mais que esse programa já vem embutido nos aplicativos como Visual Studio Code e IntelliJ IDEA
+
+“Se a gente explicar que a gente escolheu python por n motivo e não escolheu outro, talvez professor pergunte isso” escolhemos python pois é a principal linguagem do ChatGPT.
+ChatGPT, assim como seus predecessores, é desenvolvido principalmente em Python. Python é uma linguagem de programação versátil e amplamente utilizada, especialmente nos campos de processamento de linguagem natural (NLP) e inteligência artificial (IA).
+
+Embora existam outras ferramentas que auxiliam na programação, poucas têm a capacidade de integrar-se tão bem com o fluxo de trabalho na linguagem Python, que usaremos na construção do assistente virtual.
+
+
+
+
