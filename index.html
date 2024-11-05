@@ -4,32 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão do Tempo e Organização de Estudos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="user-info">
-            <img src="user-icon.png" alt="Ícone do usuário">
+    <aside class="sidebar bg-light p-3">
+        <div class="user-info text-center mb-3">
+            <img src="user_profile.png" alt="Ícone do usuário" class="img-fluid rounded-circle mb-2">
             <p>Olá, usuário</p>
             <span>usuario123@gmail.com</span>
         </div>
-        <nav class="menu">
-            <a href="#cronograma">Cronograma</a>
-            <a href="#calendario">Calendário</a>
-            <a href="#compromissos">Compromissos</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#hobbies">Hobbies</a>
-            <a href="#notas">Notas</a>
-            <a href="#metas">Metas</a>
-            <a href="#chatbot">Chatbot</a>
+        <nav class="menu nav flex-column">
+            <a class="nav-link" href="#cronograma">Cronograma</a>
+            <a class="nav-link" href="#calendario">Calendário</a>
+            <a class="nav-link" href="#compromissos">Compromissos</a>
+            <a class="nav-link" href="#projetos">Projetos</a>
+            <a class="nav-link" href="#hobbies">Hobbies</a>
+            <a class="nav-link" href="#notas">Notas</a>
+            <a class="nav-link" href="#metas">Metas</a>
+            <a class="nav-link" href="#chatbot">Chatbot</a>
         </nav>
-        <button class="toggle-btn" onclick="toggleSidebar()">&#10094;</button>
+        <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
     </aside>
-    <main class="content">
-        <div class="new-schedule">
-            <div class="add-icon">+</div>
+    <main class="content container mt-5">
+        <div class="new-schedule text-center p-3 border rounded">
+            <div class="add-icon display-4">+</div>
             <p>Novo cronograma</p>
         </div>
     </main>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
