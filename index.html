@@ -6,6 +6,7 @@
     <title>Gestão do Tempo e Organização de Estudos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="d-flex">
@@ -17,7 +18,7 @@
             </div>
             <nav class="menu nav flex-column">
                 <a class="nav-link text-white" href="#cronograma">Cronograma</a>
-                <a class="nav-link text-white" href="#calendario">Calendário</a>
+                <a class="nav-link text-white" href="#calendario" onclick="showCalendar()">Calendário</a>
                 <a class="nav-link text-white" href="#compromissos">Compromissos</a>
                 <a class="nav-link text-white" href="#projetos">Projetos</a>
                 <a class="nav-link text-white" href="#hobbies">Hobbies</a>
@@ -27,17 +28,43 @@
             </nav>
             <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
         </aside>
-        <main class="content container mt-5">
-            <div class="new-schedule text-center p-3 border rounded">
-                <div class="add-icon display-4">+</div>
-                <p>Novo cronograma</p>
+        <main class="content container-fluid mt-5">
+            <div id="calendario" class="calendar-container">
+                <div class="calendar-header">
+                    <button class="btn btn-link text-white" onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
+                    <span id="month"></span> <span id="year"></span>
+                    <button class="btn btn-link text-white" onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-body">
+                    <div class="day-names">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    <div id="days" class="days-grid"></div>
+                </div>
+            </div>
+            <div id="cronograma" class="schedule-container" style="display: none;">
+                <!-- Conteúdo do cronograma -->
+                <button class="btn btn-secondary mt-3" onclick="showCalendar()">Voltar para o Calendário</button>
             </div>
         </main>
     </div>
-    <script>
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('collapsed');
-        }
-    </script>
+
+    <!-- Modal de Anotações -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h4>Anotações para <span id="selectedDate"></span></h4>
+            <textarea id="noteText" rows="4" placeholder="Escreva sua anotação..."></textarea>
+            <button class="btn btn-primary mt-2" onclick="saveNote()">Salvar Anotação</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
