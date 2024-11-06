@@ -170,3 +170,13 @@ body, html {
 .schedule-container tr:nth-child(even) td {
     background-color: #E9ECEF;
 }
+
+.text-center {
+}
+
+
+#inicial-text {
+    padding-top: 35px;
+    font-size: 20px;
+    color: #2e3236;
+}
