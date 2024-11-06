@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
 
+    const notes = {}; // Armazena anotações por data no formato "yyyy-mm-dd"
+
     function renderCalendar(month, year) {
         daysContainer.innerHTML = '';
         monthElement.textContent = monthNames[month];
@@ -15,23 +17,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        // Preenche os dias vazios antes do primeiro dia do mês
         for (let i = 0; i < firstDay; i++) {
             const emptyDiv = document.createElement('div');
             emptyDiv.classList.add('day');
             daysContainer.appendChild(emptyDiv);
         }
 
-        // Preenche os dias do mês
-        for (let i = 1; i <= daysInMonth; i++) {
+        for (let day = 1; day <= daysInMonth; day++) {
             const dayDiv = document.createElement('div');
-            dayDiv.textContent = i;
+            dayDiv.textContent = day;
             dayDiv.classList.add('day');
+            const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            dayDiv.addEventListener('click', () => openNotesModal(dateKey));
             daysContainer.appendChild(dayDiv);
         }
     }
 
-    // Navega para o mês anterior
     function prevMonth() {
         currentMonth--;
         if (currentMonth < 0) {
@@ -41,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
         renderCalendar(currentMonth, currentYear);
     }
 
-    // Navega para o próximo mês
     function nextMonth() {
         currentMonth++;
         if (currentMonth > 11) {
@@ -51,10 +51,27 @@ document.addEventListener('DOMContentLoaded', function () {
         renderCalendar(currentMonth, currentYear);
     }
 
-    // Renderiza o calendário para o mês e ano atuais
-    renderCalendar(currentMonth, currentYear);
+    function openNotesModal(dateKey) {
+        const noteText = prompt("Digite sua anotação:");
+        if (noteText) {
+            if (!notes[dateKey]) {
+                notes[dateKey] = [];
+            }
+            notes[dateKey].push(noteText);
+            renderCalendar(currentMonth, currentYear);
+            alert(`Anotação adicionada para ${dateKey}`);
+        }
+    }
 
-    // Adiciona eventos aos botões de navegação do calendário
-    document.querySelector('.calendar-header .btn-link:first-child').addEventListener('click', prevMonth);
-    document.querySelector('.calendar-header .btn-link:last-child').addEventListener('click', nextMonth);
+    function removeNote(dateKey, index) {
+        if (notes[dateKey]) {
+            notes[dateKey].splice(index, 1);
+            if (notes[dateKey].length === 0) {
+                delete notes[dateKey];
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+    }
+
+    renderCalendar(currentMonth, currentYear);
 });
