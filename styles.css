@@ -309,3 +309,41 @@ body, html {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Estilos ChatBot */
+
+#chat-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#chat-box {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    text-align: right;
+    margin: 5px 0;
+}
+
+.bot-message {
+    text-align: left;
+    margin: 5px 0;
+}
+
+#user-input {
+    width: calc(100% - 60px);
+    padding: 5px;
+}
+
+#send-button {
+    width: 50px;
+    padding: 5px;
+}
