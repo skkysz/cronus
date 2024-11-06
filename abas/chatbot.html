@@ -4,14 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Digite sua mensagem...">
-        <button id="send-button">Enviar</button>
+    <div class="d-flex">
+        <!-- Container para o menu -->
+        <div id="menu-container"></div>
+
+        <!-- Conteúdo principal do chatbot -->
+        <main class="container mt-5">
+            <h2 class="text-center">Chatbot</h2>
+            <div id="chat-container">
+                <div id="chat-box"></div>
+                <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+                <button id="send-button">Enviar</button>
+            </div>
+        </main>
     </div>
+
+    <!-- Script para carregar o menu -->
+    <script>
+        // Carregar o menu HTML dinamicamente
+        fetch('../menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+                // Esconder o link "Chatbot" quando estiver na página chatbot.html
+                if (window.location.pathname.includes("chatbot.html")) {
+                    document.getElementById('link-chatbot').style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Erro ao carregar o menu:', error));
+    </script>
+
     <script src="../chatbot.js"></script>
+
+    <!-- Script para alternar a sidebar -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('minimized');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const pathname = window.location.pathname;
+            const linkChatbot = document.getElementById('link-chatbot');
+            const backButton = document.getElementById('back-btn');
+    
+            // Esconder o link "Chatbot" quando estiver na página chatbot.html
+            if (pathname.includes('chatbot.html') && linkChatbot) {
+                linkChatbot.style.display = 'none';
+            }
+
+            // Configura o comportamento do botão de voltar
+            if (backButton) {
+                backButton.onclick = function() {
+                    window.location.href = '../index.html';
+                };
+            }
+        });
+    </script>
+
+<style>
+    /* Estilo geral */
+    body {
+        background-color: #0d1b2a; /* Fundo escuro */
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+    }
+
+    h2 {
+        color: #c3cfe2; /* Cor do título */
+    }
+
+    #chat-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #1b263b; /* Fundo do chat */
+        border-radius: 8px;
+    }
+
+    #chat-box {
+        max-height: 500px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #0d1b2a;
+        border: 1px solid #1f4287;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    #user-input {
+        width: 75%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        margin-right: 5px;
+        color: #ffffff;
+        background-color: #0d1b2a;
+    }
+
+    #send-button {
+        width: 20%;
+        padding: 10px;
+        background-color: #1f4287;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    #send-button:hover {
+        background-color: #278ea5;
+    }
+
+    /* Estilos para as mensagens */
+    .message {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .message.bot {
+        background-color: #1f4287; /* Cor de fundo das mensagens do bot */
+        color: #ffffff;
+        align-self: flex-start;
+        max-width: 80%;
+    }
+
+    .message.user {
+        background-color: #278ea5; /* Cor de fundo das mensagens do usuário */
+        color: #ffffff;
+        align-self: flex-end;
+        max-width: 80%;
+    }
+
+    /* Placeholder color */
+    ::placeholder {
+        color: #c3cfe2; /* Cor do texto placeholder */
+    }
+</style>
+
 </body>
 </html>

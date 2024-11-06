@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+        // Adicionar células vazias no início
         for (let i = 0; i < firstDay; i++) {
             const emptyDiv = document.createElement('div');
-            emptyDiv.classList.add('day');
+            emptyDiv.classList.add('day', 'empty');
             daysContainer.appendChild(emptyDiv);
         }
 
+        // Adicionar células com os dias do mês
         for (let i = 1; i <= daysInMonth; i++) {
             const dayDiv = document.createElement('div');
             dayDiv.classList.add('day');
@@ -53,6 +55,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             daysContainer.appendChild(dayDiv);
+        }
+
+        // Adicionar células vazias no final para completar a última linha
+        const totalCells = firstDay + daysInMonth;
+        const remainingCells = (7 - (totalCells % 7)) % 7;
+        for (let i = 0; i < remainingCells; i++) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.classList.add('day', 'empty');
+            daysContainer.appendChild(emptyDiv);
         }
     }
 
