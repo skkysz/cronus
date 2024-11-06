@@ -39,52 +39,45 @@
 
     <!-- Script para carregar o menu -->
     <script>
+        // Carregar o menu HTML dinamicamente
         fetch('../menu.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('menu-container').innerHTML = data;
+                // Esconder o link "Calendário" quando estiver na página calendário.html
+                if (window.location.pathname.includes("calendario.html")) {
+                    document.getElementById('link-calendario').style.display = 'none';
+                }
             })
             .catch(error => console.error('Erro ao carregar o menu:', error));
     </script>
+
     <script src="../script.js"></script>
 
-
+    <!-- Script para alternar a sidebar -->
     <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('minimized');
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const pathname = window.location.pathname;
-            const linkCronograma = document.getElementById('link-calendario');
+            const linkCalendario = document.getElementById('link-calendario');
             const backButton = document.getElementById('back-btn');
     
-            if (pathname.includes('cronograma.html')) {
-                // Remove a aba Cronograma do menu na página cronograma.html
-                if (linkCronograma) {
-                    linkCronograma.style.display = 'none';
-                }
-                
-                // Configura o botão de voltar para ir ao index.html
-                if (backButton) {
-                    backButton.onclick = function() {
-                        window.location.href = '../index.html';
-                    };
-                }
-            } else {
-                // Mantém o comportamento normal do botão em outras páginas
-                backButton.onclick = toggleSidebar;
+            // Esconder o link "Calendário" quando estiver na página calendario.html
+            if (pathname.includes('calendario.html') && linkCalendario) {
+                linkCalendario.style.display = 'none';
+            }
+
+            // Configura o comportamento do botão de voltar
+            if (backButton) {
+                backButton.onclick = function() {
+                    window.location.href = '../index.html';
+                };
             }
         });
-    </script>    
-    
-    <!-- acho q é pra remover o link "Calendário" quando estiver na página "Calendário" -->
-    <script>
-        fetch('../menu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('menu-container').innerHTML = data;
-                // Esconder o link "Cronograma" quando estiver na página cronograma.html
-                document.getElementById('link-calendario').style.display = 'none';
-            })
-            .catch(error => console.error('Erro ao carregar o menu:', error));
     </script>
-
 </body>
 </html>

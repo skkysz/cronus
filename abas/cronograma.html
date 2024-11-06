@@ -10,8 +10,10 @@
 </head>
 <body>
     <div class="d-flex">
+        <!-- Container para o menu -->
         <div id="menu-container"></div>
-        
+
+        <!-- Conteúdo principal do cronograma -->
         <main class="content container-fluid mt-5">
             <h2 class="text-center">Cronograma</h2>
             <table class="table table-bordered">
@@ -66,24 +68,49 @@
                         <td>Café</td>
                         <td>Café</td>
                     </tr>
-                    <!-- Continue com o restante do cronograma conforme necessário -->
                 </tbody>
             </table>
             <a href="../index.html" class="btn btn-secondary mt-3">Voltar para o Menu</a>
         </main>
     </div>
 
-    <!-- Script para carregar o menu -->
+    <!-- Carregamento do menu dinamicamente -->
     <script>
         fetch('../menu.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('menu-container').innerHTML = data;
-                // Esconder o link "Cronograma" quando estiver na página cronograma.html
+
+                // Esconde o link "Cronograma" quando estamos na página cronograma.html
                 document.getElementById('link-cronograma').style.display = 'none';
             })
             .catch(error => console.error('Erro ao carregar o menu:', error));
     </script>
-    <script src="../script.js"></script>
+
+ <!-- Script para alternar a sidebar -->
+ <script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('minimized');
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const pathname = window.location.pathname;
+        const linkCalendario = document.getElementById('link-calendario');
+        const backButton = document.getElementById('back-btn');
+
+        // Esconder o link "Calendário" quando estiver na página calendario.html
+        if (pathname.includes('calendario.html') && linkCalendario) {
+            linkCalendario.style.display = 'none';
+        }
+
+        // Configura o comportamento do botão de voltar
+        if (backButton) {
+            backButton.onclick = function() {
+                window.location.href = '../index.html';
+            };
+        }
+    });
+</script>
 </body>
 </html>
