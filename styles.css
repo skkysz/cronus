@@ -5,11 +5,21 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
+.body {
+    display: flex;
+    min-height: 100vh;
+}
+
 /* Estilos do Sidebar */
 .sidebar {
     width: 250px;
     min-height: 100vh;
+    position: fixed; /* Torna o menu fixo na tela */
+    top: 0;
+    left: 0;
     transition: width 0.3s ease;
+    z-index: 1000; /* Garante que o menu sobreponha outros elementos */
+    overflow-y: auto; /* Permite que o menu role, se necessário */
 }
 
 .toggle-btn {
@@ -37,6 +47,8 @@ body, html {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    max-height: calc(100vh - 40px); /* Impede que o calendário ultrapasse a altura da tela */
+    overflow-y: auto; /* Permite rolagem no conteúdo do calendário */
 }
 
 .calendar-header {
@@ -100,7 +112,6 @@ body, html {
     overflow: hidden;
 }
 
-/* Esconde o conteúdo de usuário (imagem e texto) quando a sidebar é minimizada */
 .sidebar.minimized .user-info {
     display: none;
 }
@@ -113,4 +124,38 @@ body, html {
 
 .sidebar.minimized .toggle-btn {
     transform: rotate(180deg); /* Gira o botão de alternância */
+}
+
+/* Ajuste para quando a sidebar for minimizada */
+.sidebar.minimized {
+    width: 60px;
+    overflow: hidden;
+}
+
+.main-content {
+    margin-left: 250px; /* Adiciona o espaço necessário para o menu */
+    padding: 20px;
+    min-height: 100vh; /* Garantir que o conteúdo ocupe toda a altura da tela */
+    overflow-y: auto; /* Permite rolagem se o conteúdo exceder a altura */
+}
+
+/* Ajuste no layout geral */
+.main-content {
+    flex-grow: 1; /* Faz o conteúdo principal ocupar o restante do espaço */
+    padding: 20px;
+}
+
+.sidebar {
+    flex-shrink: 0; /* Impede que a sidebar encolha */
+}
+
+/* Se você quiser que o menu lateral role com o conteúdo */
+.sidebar {
+    position: absolute; /* Altera para que role junto com o conteúdo */
+    width: 250px;
+    height: 100%; /* Garante que ocupe toda a altura da tela */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Permite que o menu lateral role */
+    z-index: 1000;
 }
