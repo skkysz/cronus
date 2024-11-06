@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão do Tempo e Organização de Estudos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="d-flex">
-        <!-- Sidebar -->
         <aside class="sidebar bg-dark text-white p-3">
             <div class="user-info text-center mb-3">
                 <img src="user_profile.png" alt="Ícone do usuário" class="img-fluid rounded-circle mb-2">
@@ -20,7 +19,11 @@
             <nav class="menu nav flex-column">
                 <a class="nav-link text-white" href="#cronograma">Cronograma</a>
                 <a class="nav-link text-white" href="#calendario" onclick="showCalendar()">Calendário</a>
+                <a class="nav-link text-white" href="#compromissos">Compromissos</a>
+                <a class="nav-link text-white" href="#projetos">Projetos</a>
+                <a class="nav-link text-white" href="#hobbies">Hobbies</a>
                 <a class="nav-link text-white" href="#notas">Notas</a>
+                <a class="nav-link text-white" href="#metas">Metas</a>
                 <a class="nav-link text-white" href="#chatbot">Chatbot</a>
             </nav>
             <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
@@ -51,7 +54,94 @@
             
             <!-- Schedule -->
             <div id="cronograma" class="schedule-container" style="display: none;">
-                <!-- Conteúdo do cronograma -->
+                <!-- Conteúdo do cronograma -->    
+                <h2 class="text-center">Cronograma</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Segunda</th>
+                            <th>Terça</th>
+                            <th>Quarta</th>
+                            <th>Quinta</th>
+                            <th>Sexta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>06:30 - 08:00</td>
+                            <td>Acordar e se arrumar</td>
+                            <td>Acordar e se arrumar</td>
+                            <td>Acordar e se arrumar</td>
+                            <td>Acordar e se arrumar</td>
+                            <td>Acordar e se arrumar</td>
+                        </tr>
+                        <tr>
+                            <td>08:00 - 12:00</td>
+                            <td>Horário de aula</td>
+                            <td>Horário de aula</td>
+                            <td>Horário de aula</td>
+                            <td>Horário de aula</td>
+                            <td>Horário de aula</td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 13:30</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                        </tr>
+                        <tr>
+                            <td>13:30 - 15:30</td>
+                            <td>Realização de tarefas</td>
+                            <td>Realização de tarefas</td>
+                            <td>Realização de tarefas</td>
+                            <td>Realização de tarefas</td>
+                            <td>Realização de tarefas</td>
+                        </tr>
+                        <tr>
+                            <td>15:30 - 16:00</td>
+                            <td>Café</td>
+                            <td>Café</td>
+                            <td>Café</td>
+                            <td>Café</td>
+                            <td>Café</td>
+                        </tr>
+                        <tr>
+                            <td>16:00 - 17:00</td>
+                            <td>Estudo dos temas da aula</td>
+                            <td>Estudo dos temas da aula</td>
+                            <td>Estudo dos temas da aula</td>
+                            <td>Estudo dos temas da aula</td>
+                            <td>Estudo dos temas da aula</td>
+                        </tr>
+                        <tr>
+                            <td>17:00 - 17:30</td>
+                            <td>Leitura</td>
+                            <td>Leitura</td>
+                            <td>Leitura</td>
+                            <td>Leitura</td>
+                            <td>Leitura</td>
+                        </tr>
+                        <tr>
+                            <td>17:30 - 19:00</td>
+                            <td>Tempo livre para descanso</td>
+                            <td>Tempo livre para descanso</td>
+                            <td>Tempo livre para descanso</td>
+                            <td>Tempo livre para descanso</td>
+                            <td>Tempo livre para descanso</td>
+                        </tr>
+                        <tr>
+                            <td>19:00 - 21:00</td>
+                            <td>Academia ou hobby</td>
+                            <td>Academia ou hobby</td>
+                            <td>Academia ou hobby</td>
+                            <td>Academia ou hobby</td>
+                            <td>Academia ou hobby</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <button class="btn btn-secondary mt-3" onclick="showCalendar()">Voltar para o Calendário</button>
             </div>
         </main>
@@ -63,6 +153,11 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h4>Anotações para <span id="selectedDate"></span></h4>
             <textarea id="noteText" rows="4" placeholder="Escreva sua anotação..."></textarea>
+            <div class="form-check mt-2">
+                <input type="checkbox" class="form-check-input" id="attachDateCheckbox" onclick="toggleDateInput()">
+                <label class="form-check-label" for="attachDateCheckbox">Atrelar a uma data específica</label>
+            </div>
+            <input type="date" id="noteDate" class="form-control mt-2" style="display: none;">
             <button class="btn btn-primary mt-2" onclick="saveNote()">Salvar Anotação</button>
         </div>
     </div>

@@ -31,7 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
             dayDiv.addEventListener('click', function() {
                 document.getElementById('selectedDate').textContent = `${i} de ${monthNames[month]} de ${year}`;
                 document.getElementById('noteModal').style.display = 'block';
+                document.getElementById('noteDate').value = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
             });
+
+            // Verifica se há anotações para esta data
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const noteForDay = notes.find(note => note.date === `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`);
+            if (noteForDay) {
+                const noteIndicator = document.createElement('span');
+                noteIndicator.textContent = noteForDay.text;
+                dayDiv.appendChild(noteIndicator);
+            }
+
             daysContainer.appendChild(dayDiv);
         }
     }
@@ -67,14 +78,35 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('noteModal').style.display = 'none';
     }
 
+    // Alterna a exibição do seletor de data
+    window.toggleDateInput = function() {
+        const dateInput = document.getElementById('noteDate');
+        dateInput.style.display = dateInput.style.display === 'none' ? 'block' : 'none';
+    }
+
     // Salva a anotação
     window.saveNote = function() {
         const noteText = document.getElementById('noteText').value;
-        // Salvar a anotação (você pode usar localStorage, enviar para um servidor, etc.)
-        alert('Anotação salva: ' + noteText);
+        const attachDate = document.getElementById('attachDateCheckbox').checked;
+        const noteDate = document.getElementById('noteDate').value;
+        const notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+        if (attachDate && noteDate) {
+            notes.push({ text: noteText, date: noteDate });
+        } else {
+            notes.push({ text: noteText });
+        }
+
+        localStorage.setItem('notes', JSON.stringify(notes));
+        alert('Anotação salva!');
         closeModal();
+        renderCalendar(currentMonth, currentYear); // Re-renderiza o calendário para mostrar a nova anotação
     }
 
     // Renderiza o calendário para o mês e ano atuais
     renderCalendar(currentMonth, currentYear);
+
+    // Adiciona eventos aos botões de navegação do calendário
+    document.querySelector('.calendar-header .btn-link:first-child').addEventListener('click', prevMonth);
+    document.querySelector('.calendar-header .btn-link:last-child').addEventListener('click', nextMonth);
 });
