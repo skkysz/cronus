@@ -9,28 +9,71 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2 class="text-center">Calendário</h2>
-        <div class="calendar-header">
-            <button class="btn btn-link text-dark" onclick="prevMonth()">Anterior</button>
-            <span id="month"></span> <span id="year"></span>
-            <button class="btn btn-link text-dark" onclick="nextMonth()">Próximo</button>
-        </div>
-        <div class="calendar-body">
-            <div class="day-names">
-                <div>Dom</div>
-                <div>Seg</div>
-                <div>Ter</div>
-                <div>Qua</div>
-                <div>Qui</div>
-                <div>Sex</div>
-                <div>Sáb</div>
+    <div class="d-flex">
+        <!-- Container para o menu -->
+        <div id="menu-container"></div>
+
+        <!-- Conteúdo principal do calendário -->
+        <main class="container mt-5">
+            <h2 class="text-center">Calendário</h2>
+            <div class="calendar-header">
+                <button class="btn btn-link text-dark" onclick="prevMonth()">Anterior</button>
+                <span id="month"></span> <span id="year"></span>
+                <button class="btn btn-link text-dark" onclick="nextMonth()">Próximo</button>
             </div>
-            <div id="days" class="days-grid"></div>
-        </div>
-        <a href="index.html" class="btn btn-secondary mt-3">Voltar para o Menu</a>
+            <div class="calendar-body">
+                <div class="day-names">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sex</div>
+                    <div>Sáb</div>
+                </div>
+                <div id="days" class="days-grid"></div>
+            </div>
+            <a href="../index.html" class="btn btn-secondary mt-3">Voltar para o Menu</a>
+        </main>
     </div>
 
+    <!-- Script para carregar o menu -->
+    <script>
+        fetch('../menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o menu:', error));
+    </script>
     <script src="../script.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const pathname = window.location.pathname;
+            const linkCronograma = document.getElementById('link-calendario');
+            const backButton = document.getElementById('back-btn');
+    
+            if (pathname.includes('cronograma.html')) {
+                // Remove a aba Cronograma do menu na página cronograma.html
+                if (linkCronograma) {
+                    linkCronograma.style.display = 'none';
+                }
+                
+                // Configura o botão de voltar para ir ao index.html
+                if (backButton) {
+                    backButton.onclick = function() {
+                        window.location.href = '../index.html';
+                    };
+                }
+            } else {
+                // Mantém o comportamento normal do botão em outras páginas
+                backButton.onclick = toggleSidebar;
+            }
+        });
+    </script>    
+
+
 </body>
 </html>

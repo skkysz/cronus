@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+
+<!-- FILE: menu.html -->
+<aside class="sidebar bg-dark text-white p-3">
+    <div class="user-info text-center mb-3">
+        <img src="user_profile.png" alt="Ícone do usuário" class="img-fluid rounded-circle mb-2">
+        <p>Olá, usuário</p>
+        <span>usuario123@gmail.com</span>
+    </div>
+    <nav class="menu nav flex-column">
+        <a id="link-cronograma" class="nav-link text-white" href="/abas/cronograma.html">Cronograma</a>
+        <a id="link-calendario" class="nav-link text-white" href="/abas/calendario.html">Calendário</a>
+        <a class="nav-link text-white" href="#compromissos">Compromissos</a>
+        <a class="nav-link text-white" href="#projetos">Projetos</a>
+        <a class="nav-link text-white" href="#hobbies">Hobbies</a>
+        <a class="nav-link text-white" href="#notas">Notas</a>
+        <a class="nav-link text-white" href="#metas">Metas</a>
+        <a class="nav-link text-white" href="#chatbot">Chatbot</a>
+    </nav>
+    <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
+</aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Detecta a página atual
+        const currentPage = window.location.pathname.split("/").pop();
+
+        // Esconde o link "Cronograma" se a página atual for "cronograma.html"
+        if (currentPage === "cronograma.html") {
+            document.getElementById("link-cronograma").style.display = "none";
+        }
+    });
+</script>

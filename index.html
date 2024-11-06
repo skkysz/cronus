@@ -10,24 +10,7 @@
 </head>
 <body>
     <div class="d-flex">
-        <aside class="sidebar bg-dark text-white p-3">
-            <div class="user-info text-center mb-3">
-                <img src="user_profile.png" alt="Ícone do usuário" class="img-fluid rounded-circle mb-2">
-                <p>Olá, usuário</p>
-                <span>usuario123@gmail.com</span>
-            </div>
-            <nav class="menu nav flex-column">
-                <a class="nav-link text-white" href="abas/cronograma.html">Cronograma</a>
-                <a class="nav-link text-white" href="abas/calendario.html">Calendário</a>
-                <a class="nav-link text-white" href="#compromissos">Compromissos</a>
-                <a class="nav-link text-white" href="#projetos">Projetos</a>
-                <a class="nav-link text-white" href="#hobbies">Hobbies</a>
-                <a class="nav-link text-white" href="#notas">Notas</a>
-                <a class="nav-link text-white" href="#metas">Metas</a>
-                <a class="nav-link text-white" href="#chatbot">Chatbot</a>
-            </nav>
-            <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
-        </aside>
+        <div id="menu-container"></div>
         
         <main class="content container-fluid mt-5">
             <h2 class="text-center">Bem-vindo à Gestão do Tempo e Organização de Estudos</h2>
@@ -35,6 +18,41 @@
         </main>
     </div>
 
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o menu:', error));
+    </script>
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const pathname = window.location.pathname;
+            const linkCronograma = document.getElementById('link-cronograma');
+            const backButton = document.getElementById('back-btn');
+    
+            if (pathname.includes('cronograma.html')) {
+                // Remove a aba Cronograma do menu na página cronograma.html
+                if (linkCronograma) {
+                    linkCronograma.style.display = 'none';
+                }
+                
+                // Configura o botão de voltar para ir ao index.html
+                if (backButton) {
+                    backButton.onclick = function() {
+                        window.location.href = '../index.html';
+                    };
+                }
+            } else {
+                // Mantém o comportamento normal do botão em outras páginas
+                backButton.onclick = toggleSidebar;
+            }
+        });
+    </script>    
+
+
 </body>
 </html>
