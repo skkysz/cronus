@@ -78,3 +78,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Renderiza o calendário para o mês e ano atuais
     renderCalendar(currentMonth, currentYear);
 });
+
+function showCalendar() {
+    document.getElementById("calendario").style.display = "block";
+    document.getElementById("cronograma").style.display = "none";
+}
+
+function showSchedule() {
+    document.getElementById("calendario").style.display = "none";
+    document.getElementById("cronograma").style.display = "block";
+}
