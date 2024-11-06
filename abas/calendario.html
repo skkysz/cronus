@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário - Gestão do Tempo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Calendário</h2>
+        <div class="calendar-header">
+            <button class="btn btn-link text-dark" onclick="prevMonth()">Anterior</button>
+            <span id="month"></span> <span id="year"></span>
+            <button class="btn btn-link text-dark" onclick="nextMonth()">Próximo</button>
+        </div>
+        <div class="calendar-body">
+            <div class="day-names">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+            </div>
+            <div id="days" class="days-grid"></div>
+        </div>
+        <a href="index.html" class="btn btn-secondary mt-3">Voltar para o Menu</a>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

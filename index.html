@@ -17,8 +17,8 @@
                 <span>usuario123@gmail.com</span>
             </div>
             <nav class="menu nav flex-column">
-                <a class="nav-link text-white" href="#cronograma" onclick="showSchedule()">Cronograma</a>
-                <a class="nav-link text-white" href="#calendario" onclick="showCalendar()">Calendário</a>
+                <a class="nav-link text-white" href="abas/cronograma.html">Cronograma</a>
+                <a class="nav-link text-white" href="abas/calendario.html">Calendário</a>
                 <a class="nav-link text-white" href="#compromissos">Compromissos</a>
                 <a class="nav-link text-white" href="#projetos">Projetos</a>
                 <a class="nav-link text-white" href="#hobbies">Hobbies</a>
@@ -29,137 +29,10 @@
             <button class="toggle-btn btn btn-primary mt-3" onclick="toggleSidebar()">&#10094;</button>
         </aside>
         
-        <!-- Main Content -->
         <main class="content container-fluid mt-5">
-            <!-- Calendar -->
-            <div id="calendario" class="calendar-container">
-                <div class="calendar-header">
-                    <button class="btn btn-link text-white" onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
-                    <span id="month"></span> <span id="year"></span>
-                    <button class="btn btn-link text-white" onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="calendar-body">
-                    <div class="day-names">
-                        <div>Dom</div>
-                        <div>Seg</div>
-                        <div>Ter</div>
-                        <div>Qua</div>
-                        <div>Qui</div>
-                        <div>Sex</div>
-                        <div>Sáb</div>
-                    </div>
-                    <div id="days" class="days-grid"></div>
-                </div>
-            </div>
-            
-            <!-- Schedule -->
-            <div id="cronograma" class="schedule-container" style="display: none;">
-                <!-- Conteúdo do cronograma -->    
-                <h2 class="text-center">Cronograma</h2>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Horário</th>
-                            <th>Segunda</th>
-                            <th>Terça</th>
-                            <th>Quarta</th>
-                            <th>Quinta</th>
-                            <th>Sexta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>06:30 - 08:00</td>
-                            <td>Acordar e se arrumar</td>
-                            <td>Acordar e se arrumar</td>
-                            <td>Acordar e se arrumar</td>
-                            <td>Acordar e se arrumar</td>
-                            <td>Acordar e se arrumar</td>
-                        </tr>
-                        <tr>
-                            <td>08:00 - 12:00</td>
-                            <td>Horário de aula</td>
-                            <td>Horário de aula</td>
-                            <td>Horário de aula</td>
-                            <td>Horário de aula</td>
-                            <td>Horário de aula</td>
-                        </tr>
-                        <tr>
-                            <td>12:00 - 13:30</td>
-                            <td>Almoço</td>
-                            <td>Almoço</td>
-                            <td>Almoço</td>
-                            <td>Almoço</td>
-                            <td>Almoço</td>
-                        </tr>
-                        <tr>
-                            <td>13:30 - 15:30</td>
-                            <td>Realização de tarefas</td>
-                            <td>Realização de tarefas</td>
-                            <td>Realização de tarefas</td>
-                            <td>Realização de tarefas</td>
-                            <td>Realização de tarefas</td>
-                        </tr>
-                        <tr>
-                            <td>15:30 - 16:00</td>
-                            <td>Café</td>
-                            <td>Café</td>
-                            <td>Café</td>
-                            <td>Café</td>
-                            <td>Café</td>
-                        </tr>
-                        <tr>
-                            <td>16:00 - 17:00</td>
-                            <td>Estudo dos temas da aula</td>
-                            <td>Estudo dos temas da aula</td>
-                            <td>Estudo dos temas da aula</td>
-                            <td>Estudo dos temas da aula</td>
-                            <td>Estudo dos temas da aula</td>
-                        </tr>
-                        <tr>
-                            <td>17:00 - 17:30</td>
-                            <td>Leitura</td>
-                            <td>Leitura</td>
-                            <td>Leitura</td>
-                            <td>Leitura</td>
-                            <td>Leitura</td>
-                        </tr>
-                        <tr>
-                            <td>17:30 - 19:00</td>
-                            <td>Tempo livre para descanso</td>
-                            <td>Tempo livre para descanso</td>
-                            <td>Tempo livre para descanso</td>
-                            <td>Tempo livre para descanso</td>
-                            <td>Tempo livre para descanso</td>
-                        </tr>
-                        <tr>
-                            <td>19:00 - 21:00</td>
-                            <td>Academia ou hobby</td>
-                            <td>Academia ou hobby</td>
-                            <td>Academia ou hobby</td>
-                            <td>Academia ou hobby</td>
-                            <td>Academia ou hobby</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="btn btn-secondary mt-3" onclick="showCalendar()">Voltar para o Calendário</button>
-            </div>
+            <h2 class="text-center">Bem-vindo à Gestão do Tempo e Organização de Estudos</h2>
+            <p>Aqui você pode acessar suas ferramentas de cronograma, calendário, compromissos e muito mais!</p>
         </main>
-    </div>
-
-    <!-- Modal de Anotações -->
-    <div id="noteModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h4>Anotações para <span id="selectedDate"></span></h4>
-            <textarea id="noteText" rows="4" placeholder="Escreva sua anotação..."></textarea>
-            <div class="form-check mt-2">
-                <input type="checkbox" class="form-check-input" id="attachDateCheckbox" onclick="toggleDateInput()">
-                <label class="form-check-label" for="attachDateCheckbox">Atrelar a uma data específica</label>
-            </div>
-            <input type="date" id="noteDate" class="form-control mt-2" style="display: none;">
-            <button class="btn btn-primary mt-2" onclick="saveNote()">Salvar Anotação</button>
-        </div>
     </div>
 
     <script src="script.js"></script>
