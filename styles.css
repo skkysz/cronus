@@ -233,3 +233,79 @@ body, html {
     cursor: pointer;
 }
 
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas para 7 dias da semana */
+    gap: 5px;
+}
+
+.day {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    min-height: 100px; /* Ajuste o tamanho mínimo dos dias */
+    overflow-y: auto; /* Permite rolagem se houver muitas anotações */
+}
+
+.day-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+}
+
+.note {
+    background-color: #f0f0f0;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+    position: relative;
+    word-wrap: break-word; /* Permite quebra de linha nas anotações longas */
+}
+
+.note .remove-note {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+    color: red;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

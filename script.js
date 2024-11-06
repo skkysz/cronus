@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     const daysContainer = document.getElementById('days');
     const monthElement = document.getElementById('month');
@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentDate = new Date();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
-
-    const notes = {}; // Armazena anotações por data no formato "yyyy-mm-dd"
+    let selectedDateKey = '';
 
     function renderCalendar(month, year) {
         daysContainer.innerHTML = '';
@@ -23,12 +22,36 @@ document.addEventListener('DOMContentLoaded', function () {
             daysContainer.appendChild(emptyDiv);
         }
 
-        for (let day = 1; day <= daysInMonth; day++) {
+        for (let i = 1; i <= daysInMonth; i++) {
             const dayDiv = document.createElement('div');
-            dayDiv.textContent = day;
             dayDiv.classList.add('day');
-            const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            dayDiv.addEventListener('click', () => openNotesModal(dateKey));
+            dayDiv.innerHTML = `<span class="day-number">${i}</span>`;
+            dayDiv.addEventListener('click', function() {
+                selectedDateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                document.getElementById('selectedDate').textContent = `${i} de ${monthNames[month]} de ${year}`;
+                document.getElementById('noteModal').style.display = 'block';
+            });
+
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const notesForDay = notes.filter(note => note.date === `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`);
+            notesForDay.forEach(note => {
+                const noteDiv = document.createElement('div');
+                noteDiv.classList.add('note');
+                noteDiv.textContent = note.text;
+                noteDiv.style.backgroundColor = note.color;
+
+                const removeBtn = document.createElement('span');
+                removeBtn.classList.add('remove-note');
+                removeBtn.textContent = 'x';
+                removeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    removeNote(note.date, note.text);
+                });
+
+                noteDiv.appendChild(removeBtn);
+                dayDiv.appendChild(noteDiv);
+            });
+
             daysContainer.appendChild(dayDiv);
         }
     }
@@ -51,26 +74,27 @@ document.addEventListener('DOMContentLoaded', function () {
         renderCalendar(currentMonth, currentYear);
     }
 
-    function openNotesModal(dateKey) {
-        const noteText = prompt("Digite sua anotação:");
-        if (noteText) {
-            if (!notes[dateKey]) {
-                notes[dateKey] = [];
-            }
-            notes[dateKey].push(noteText);
-            renderCalendar(currentMonth, currentYear);
-            alert(`Anotação adicionada para ${dateKey}`);
-        }
+    window.closeModal = function() {
+        document.getElementById('noteModal').style.display = 'none';
     }
 
-    function removeNote(dateKey, index) {
-        if (notes[dateKey]) {
-            notes[dateKey].splice(index, 1);
-            if (notes[dateKey].length === 0) {
-                delete notes[dateKey];
-            }
-            renderCalendar(currentMonth, currentYear);
-        }
+    window.saveNote = function() {
+        const noteText = document.getElementById('noteText').value;
+        const noteColor = document.getElementById('noteColor').value;
+        const notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+        notes.push({ text: noteText, date: selectedDateKey, color: noteColor });
+
+        localStorage.setItem('notes', JSON.stringify(notes));
+        closeModal();
+        renderCalendar(currentMonth, currentYear);
+    }
+
+    function removeNote(date, text) {
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        notes = notes.filter(note => !(note.date === date && note.text === text));
+        localStorage.setItem('notes', JSON.stringify(notes));
+        renderCalendar(currentMonth, currentYear);
     }
 
     renderCalendar(currentMonth, currentYear);
