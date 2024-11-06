@@ -110,3 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.calendar-header .btn-link:first-child').addEventListener('click', prevMonth);
     document.querySelector('.calendar-header .btn-link:last-child').addEventListener('click', nextMonth);
 });
+
+function showCalendar() {
+    document.getElementById("calendario").style.display = "block";
+    document.getElementById("cronograma").style.display = "none";
+}
+
+function showSchedule() {
+    document.getElementById("calendario").style.display = "none";
+    document.getElementById("cronograma").style.display = "block";
+}
