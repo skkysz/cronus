@@ -19,6 +19,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Horário</th>
                         <th>Segunda</th>
                         <th>Terça</th>
@@ -29,6 +30,7 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>Início</td>
                         <td>06:30 - 08:00</td>
                         <td>Acordar e se arrumar</td>
                         <td>Acordar e se arrumar</td>
@@ -37,6 +39,7 @@
                         <td>Acordar e se arrumar</td>
                     </tr>
                     <tr>
+                        <td>Compromissos</td>
                         <td>08:00 - 12:00</td>
                         <td>Horário de aula</td>
                         <td>Horário de aula</td>
@@ -45,6 +48,7 @@
                         <td>Horário de aula</td>
                     </tr>
                     <tr>
+                        <td>Pausa</td>
                         <td>12:00 - 13:30</td>
                         <td>Almoço</td>
                         <td>Almoço</td>
@@ -53,6 +57,7 @@
                         <td>Almoço</td>
                     </tr>
                     <tr>
+                        <td>Compromissos</td>
                         <td>13:30 - 15:30</td>
                         <td>Realização de tarefas</td>
                         <td>Realização de tarefas</td>
@@ -61,12 +66,49 @@
                         <td>Realização de tarefas</td>
                     </tr>
                     <tr>
+                        <td>Pausa</td>
                         <td>15:30 - 16:00</td>
                         <td>Café</td>
                         <td>Café</td>
                         <td>Café</td>
                         <td>Café</td>
                         <td>Café</td>
+                    </tr>
+                    <tr>
+                        <td>Projetos</td>
+                        <td>16:00 - 17:00</td>
+                        <td>Estudo dos temas da aula</td>
+                        <td>Estudo dos temas da aula</td>
+                        <td>Estudo dos temas da aula</td>
+                        <td>Estudo dos temas da aula</td>
+                        <td>Estudo dos temas da aula</td>
+                    </tr>
+                    <tr>
+                        <td>Projetos</td>
+                        <td>17:00 - 17:30</td>
+                        <td>Leitura</td>
+                        <td>Leitura</td>
+                        <td>Leitura</td>
+                        <td>Leitura</td>
+                        <td>Leitura</td>
+                    </tr>
+                    <tr>
+                        <td>Hobbies</td>
+                        <td>17:30 - 19:00</td>
+                        <td>Tempo livre para descanso</td>
+                        <td>Tempo livre para descanso</td>
+                        <td>Tempo livre para descanso</td>
+                        <td>Tempo livre para descanso</td>
+                        <td>Tempo livre para descanso</td>
+                    </tr>
+                    <tr>
+                        <td>Hobbies</td>
+                        <td>19:00 - 20:00</td>
+                        <td>Academia</td>
+                        <td>Academia</td>
+                        <td>Academia</td>
+                        <td>Academia</td>
+                        <td>Academia</td>
                     </tr>
                 </tbody>
             </table>
@@ -87,30 +129,30 @@
             .catch(error => console.error('Erro ao carregar o menu:', error));
     </script>
 
- <!-- Script para alternar a sidebar -->
- <script>
-    function toggleSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.classList.toggle('minimized');
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const pathname = window.location.pathname;
-        const linkCalendario = document.getElementById('link-calendario');
-        const backButton = document.getElementById('back-btn');
-
-        // Esconder o link "Calendário" quando estiver na página calendario.html
-        if (pathname.includes('calendario.html') && linkCalendario) {
-            linkCalendario.style.display = 'none';
+    <!-- Script para alternar a sidebar -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('minimized');
         }
 
-        // Configura o comportamento do botão de voltar
-        if (backButton) {
-            backButton.onclick = function() {
-                window.location.href = '../index.html';
-            };
-        }
-    });
-</script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const pathname = window.location.pathname;
+            const linkCalendario = document.getElementById('link-calendario');
+            const backButton = document.getElementById('back-btn');
+
+            // Esconder o link "Calendário" quando estiver na página calendario.html
+            if (pathname.includes('calendario.html') && linkCalendario) {
+                linkCalendario.style.display = 'none';
+            }
+
+            // Configura o comportamento do botão de voltar
+            if (backButton) {
+                backButton.onclick = function() {
+                    window.location.href = '../index.html';
+                };
+            }
+        });
+    </script>
 </body>
 </html>
