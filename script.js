@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            if (!Array.isArray(notes)) {
+                console.error('Notas armazenadas não são um array:', notes);
+                continue;
+            }
             const notesForDay = notes.filter(note => note.date === `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`);
             notesForDay.forEach(note => {
                 const noteDiv = document.createElement('div');
@@ -94,6 +98,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const noteColor = document.getElementById('noteColor').value;
         const notes = JSON.parse(localStorage.getItem('notes')) || [];
 
+        if (!Array.isArray(notes)) {
+            console.error('Notas armazenadas não são um array:', notes);
+            return;
+        }
+
         notes.push({ text: noteText, date: selectedDateKey, color: noteColor });
 
         localStorage.setItem('notes', JSON.stringify(notes));
@@ -103,6 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function removeNote(date, text) {
         let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        if (!Array.isArray(notes)) {
+            console.error('Notas armazenadas não são um array:', notes);
+            return;
+        }
         notes = notes.filter(note => !(note.date === date && note.text === text));
         localStorage.setItem('notes', JSON.stringify(notes));
         renderCalendar(currentMonth, currentYear);
