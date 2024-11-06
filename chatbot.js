@@ -26,7 +26,9 @@ document.getElementById('send-button').addEventListener('click', async () => {
 });
 
 async function getChatbotResponse(message) {
-    const apiKey = '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';
+    const apiKey = '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';  // Substitua com sua chave da API da OpenAI
+    console.log('Enviando solicitação para a API...');
+
     const response = await fetch('https://api.openai.com/v1/completions', {
         method: 'POST',
         headers: {
@@ -36,17 +38,20 @@ async function getChatbotResponse(message) {
         body: JSON.stringify({
             model: 'text-davinci-003',
             prompt: message,
-            max_tokens: 150
+            max_tokens: 150,
+            temperature: 0.7
         })
     });
 
     if (!response.ok) {
         const errorData = await response.json();
         console.error('Erro na API:', errorData);
-        throw new Error(`Erro na API: ${response.statusText}`);
+        throw new Error(`Erro na API: ${response.status} - ${response.statusText}`);
     }
 
     const data = await response.json();
+    console.log('Dados recebidos da API:', data);
+
     if (!data.choices || data.choices.length === 0) {
         throw new Error('Resposta inesperada da API');
     }
