@@ -74,4 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     renderCalendar(currentMonth, currentYear);
+
+    document.querySelector('.calendar-header .btn-link:first-child').addEventListener('click', prevMonth);
+    document.querySelector('.calendar-header .btn-link:last-child').addEventListener('click', nextMonth);
 });
